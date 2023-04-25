@@ -38,6 +38,19 @@ public class Pod : MonoBehaviour
             Camholder.y += 20f;
 
         }
+        else
+        {
+
+        }
+        if(Input.GetKeyDown("z") && InPod == true)
+        {
+            InPod = false;
+            Debug.Log("exited");
+        }
+
+
+
+
     }
 
 
