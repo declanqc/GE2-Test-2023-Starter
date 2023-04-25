@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pod : MonoBehaviour
 {
+    public BoidController boidController;
 
     public FPSController PlayerControls;
     public GameObject Player;
@@ -24,11 +25,16 @@ public class Pod : MonoBehaviour
     }
 
 
-
+    IEnumerator Control()
+    {
+        Boid2.AddComponent<BoidController>();
+        return null;
+    }
     public void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<FPSController>())
         {
+            Control();          
             Debug.Log("entered");
             InPod = true;
         }
@@ -46,7 +52,7 @@ public class Pod : MonoBehaviour
             
             PlayerCamera.transform.rotation = Boid.transform.rotation;
             Destroy(Player.GetComponent<FPSController>());
-            Control();
+            
 
         }
         else
@@ -61,12 +67,9 @@ public class Pod : MonoBehaviour
         }
 
 
-        IEnumerator Control()
-        {
-            Boid2.AddComponent<BoidController>();
-            return null;
-        }
+       
 
+        
     }
 
 

@@ -7,11 +7,18 @@ public class BoidController : MonoBehaviour
     public GameObject mainCamera;
     float invcosTheta1;
     public float speed = 50.0f;
-
+    void Start()
+    {
+        Cursor.visible = false;
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main.gameObject;
+        }
+    }
     void Walk(float units)
     {
         Vector3 forward = mainCamera.transform.forward;
-        //forward.y = 0;
+        forward.y = 0;
         forward.Normalize();
         transform.position += forward * units;
     }
