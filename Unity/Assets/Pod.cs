@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pod : MonoBehaviour
 {
     public BoidController boidController;
+    
 
     public FPSController PlayerControls;
     public GameObject Player;
@@ -15,6 +16,7 @@ public class Pod : MonoBehaviour
     public bool InPod = false;
 
     public Vector3 OldCamPos;
+    public Vector3 OldPlayerPos;
 
 
 
@@ -22,21 +24,24 @@ public class Pod : MonoBehaviour
     public void Start()
     {
         OldCamPos = PlayerCamera.transform.position;
+        OldPlayerPos = Player.transform.position;
     }
 
 
     IEnumerator Control()
     {
-        Boid2.AddComponent<BoidController>();
+        Boid2.GetComponent<BoidController>().enabled = true;
         return null;
     }
     public void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<FPSController>())
         {
-            Control();          
+            Control();
+            Boid2.GetComponent<Boid>().enabled = false;
             Debug.Log("entered");
             InPod = true;
+            
         }
     }
 
@@ -62,8 +67,13 @@ public class Pod : MonoBehaviour
         if(Input.GetKeyDown("z") && InPod == true)
         {
             PlayerCamera.transform.position = OldCamPos;
+            Player.transform.position = OldPlayerPos;
+
             InPod = false;
             Debug.Log("exited");
+            Boid2.GetComponent<BoidController>().enabled = false;
+            Boid2.GetComponent<Boid>().enabled = true;
+
         }
 
 
