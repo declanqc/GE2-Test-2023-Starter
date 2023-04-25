@@ -427,12 +427,58 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469484078}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &611325512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: f127d64459abf064384ea50a5b5c8e54,
+    type: 3}
+  m_PrefabInstance: {fileID: 1650877780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &611325513 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f127d64459abf064384ea50a5b5c8e54,
     type: 3}
   m_PrefabInstance: {fileID: 1650877780}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &611325516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611325512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7178bc5a9da73cf4d8fd60d6fed4798f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1432262229}
+  Boid: {fileID: 1039729033}
+--- !u!65 &611325517
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611325512}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1269197, y: 1.1807306, z: 0.9708203}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &611325518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611325512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53709738f03e8804095d1219f1b3e906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 90
 --- !u!1 &652518889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,6 +1234,7 @@ GameObject:
   - component: {fileID: 1213023833}
   - component: {fileID: 1213023832}
   - component: {fileID: 1213023831}
+  - component: {fileID: 1213023835}
   m_Layer: 0
   m_Name: body4
   m_TagString: Untagged
@@ -1206,8 +1253,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 2.4632673, z: 1}
+  m_Center: {x: 0, y: 0.73163366, z: 0}
 --- !u!23 &1213023832
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1274,6 +1321,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1213023835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213023830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7178bc5a9da73cf4d8fd60d6fed4798f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1432262229}
+  Boid: {fileID: 1039729033}
 --- !u!1 &1382551197
 GameObject:
   m_ObjectHideFlags: 0
@@ -1471,7 +1532,7 @@ GameObject:
   - component: {fileID: 1432262230}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1488,9 +1549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb3da58f7ae8904d808d20bd59dda5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1382551197}
   speed: 50
-  lookSpeed: 150
+  lookSpeed: 200
   allowPitch: 1
   style:
     m_Name: 
@@ -1756,7 +1817,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: f127d64459abf064384ea50a5b5c8e54,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.32000017
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f127d64459abf064384ea50a5b5c8e54,
         type: 3}
@@ -1806,7 +1867,12 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: f127d64459abf064384ea50a5b5c8e54,
         type: 3}
       propertyPath: m_Name
-      value: Dodecahedron
+      value: Pod
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f127d64459abf064384ea50a5b5c8e54,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
