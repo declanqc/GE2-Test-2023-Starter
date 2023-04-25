@@ -15,5 +15,6 @@ public class RotateMe : MonoBehaviour
     void Update()
     {
         transform.Rotate(0, speed * Time.deltaTime, 0);
+
     }
 }

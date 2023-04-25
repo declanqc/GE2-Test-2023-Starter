@@ -482,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7178bc5a9da73cf4d8fd60d6fed4798f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boidController: {fileID: 0}
   PlayerControls: {fileID: 0}
   Player: {fileID: 1432262229}
   PlayerCamera: {fileID: 1382551197}
@@ -490,6 +491,7 @@ MonoBehaviour:
   Camholder: {fileID: 82999814}
   InPod: 0
   OldCamPos: {x: 0, y: 0, z: 0}
+  OldPlayerPos: {x: 0, y: 0, z: 0}
 --- !u!65 &611325517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -969,6 +971,7 @@ GameObject:
   - component: {fileID: 1039729043}
   - component: {fileID: 1039729034}
   - component: {fileID: 1039729041}
+  - component: {fileID: 1039729044}
   m_Layer: 0
   m_Name: boid
   m_TagString: Untagged
@@ -1178,6 +1181,20 @@ MonoBehaviour:
   boid: {fileID: 0}
   targetGameObject: {fileID: 373635476}
   target: {x: 0, y: 0, z: 0}
+--- !u!114 &1039729044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1039729033}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e17cfcfc5949e245bb779320978bb35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 0}
+  speed: 50
 --- !u!1 &1113860501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,6 +1968,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f127d64459abf064384ea50a5b5c8e54,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bbcbfa2bce4e6124f8489fa65b7ee73a, type: 2}
     - target: {fileID: 919132149155446097, guid: f127d64459abf064384ea50a5b5c8e54,
         type: 3}
       propertyPath: m_Name
