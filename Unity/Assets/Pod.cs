@@ -9,6 +9,7 @@ public class Pod : MonoBehaviour
     public GameObject Player;
     public GameObject PlayerCamera;
     public GameObject Boid;
+    public GameObject Boid2;
     public GameObject Camholder;
     public bool InPod = false;
 
@@ -44,8 +45,8 @@ public class Pod : MonoBehaviour
             PlayerCamera.transform.position = Camholder.transform.position;
             
             PlayerCamera.transform.rotation = Boid.transform.rotation;
-            
-            
+            Destroy(Player.GetComponent<FPSController>());
+            Control();
 
         }
         else
@@ -60,7 +61,11 @@ public class Pod : MonoBehaviour
         }
 
 
-
+        IEnumerator Control()
+        {
+            Boid2.AddComponent<BoidController>();
+            return null;
+        }
 
     }
 
