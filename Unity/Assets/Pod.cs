@@ -9,8 +9,18 @@ public class Pod : MonoBehaviour
     public GameObject Player;
     public GameObject PlayerCamera;
     public GameObject Boid;
-    public Vector3 Camholder = Vector3.zero;
+    public GameObject Camholder;
     public bool InPod = false;
+
+    public Vector3 OldCamPos;
+
+
+
+
+    public void Start()
+    {
+        OldCamPos = PlayerCamera.transform.position;
+    }
 
 
 
@@ -31,11 +41,11 @@ public class Pod : MonoBehaviour
             Debug.Log("InPod");
             Player.transform.position = Boid.transform.position;
             Player.transform.rotation = Boid.transform.rotation;
-            PlayerCamera.transform.position = Boid.transform.position;
+            PlayerCamera.transform.position = Camholder.transform.position;
             
             PlayerCamera.transform.rotation = Boid.transform.rotation;
-            Camholder = PlayerCamera.transform.position;
-            Camholder.y += 20f;
+            
+            
 
         }
         else
@@ -44,6 +54,7 @@ public class Pod : MonoBehaviour
         }
         if(Input.GetKeyDown("z") && InPod == true)
         {
+            PlayerCamera.transform.position = OldCamPos;
             InPod = false;
             Debug.Log("exited");
         }
